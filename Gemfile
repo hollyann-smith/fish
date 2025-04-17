@@ -8,10 +8,12 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
+gem "image_processing", "~> 1.2"
+
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
-
+gem "devise", "~> 4.9", ">= 4.9.4"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "solid_cache"

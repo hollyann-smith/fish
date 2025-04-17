@@ -1,0 +1,6 @@
+<%= form_with model: [@catch, @comment], local: true do |form| %>
+  <div>
+    <%= form.text_area :content, placeholder: "Add a comment..." %>
+  </div>
+  <%= form.submit "Post Comment" %>
+<% end %>

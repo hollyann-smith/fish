@@ -1,0 +1,34 @@
+<div class="navbar-container">
+  <nav class="navbar bg-dark navbar-dark">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+      <div class="d-flex align-items-center">
+        <%= link_to 'Gone Fishin', root_path, class: 'navbar-brand me-3' %>
+
+        <ul class="navbar-nav d-flex flex-row gap-3 mb-0">
+          <li class="nav-item">
+            <%= link_to "About Us", home_about_path, class: 'nav-link' %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "My Fish", catches_path, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <%# <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-custom" type="submit">Search</button>
+      </form> %>
+
+    </div>
+  </nav>
+</div>

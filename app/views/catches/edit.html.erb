@@ -1,0 +1,10 @@
+  <div class="card-container"card-container>
+  <%= link_to "Back to catches", catches_path, class:"btn btn-dark" %>
+  </div>
+<% content_for :title, "Editing catch" %>
+
+<%= render partial: "catch_detail_card", locals: { catch: @catch, show_link: false } %>
+
+<%= render "form", catch: @catch %>
+
+<br>

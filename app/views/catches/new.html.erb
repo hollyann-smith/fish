@@ -1,0 +1,10 @@
+<div>
+  <%= link_to "Back to catches", catches_path, class:"btn btn-custom" %>
+</div>
+
+<% content_for :title, "New catch" %>
+
+
+<%= render "form", catch: @catch %>
+
+<br>

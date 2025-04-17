@@ -1,10 +1,105 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+
+body {
+  background-color: #FEEC47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #212529; 
+  z-index: 10; 
+}
+
+.logo {
+  width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.5rem; 
+}
+
+.card {
+  background-color: #1c1c27 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #333 !important;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card .card-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid #444 !important;
+  color: #ffc107 !important;
+}
+
+.card .card-body {
+  background-color: transparent !important;
+  color: #f1f1f1 !important;
+}
+
+.card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f9f8f5 !important;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn-custom {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #ffeb3b;
+  color: #000;
+  border-color: #080807;
+}
+
+.table {
+  color: #f3f1f1;
+}
+
+.card-flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.5rem; 
+}
+
+.about-flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

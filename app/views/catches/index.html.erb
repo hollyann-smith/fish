@@ -1,0 +1,12 @@
+<br/>
+
+<div class="card-container">
+<%= link_to "Add New Catch", new_catch_path, class:"btn btn-custom" %>
+</div>
+<div class="card-flex">
+<% @catches.each do |catch| %>
+<% if catch.user == current_user %>
+  <%= render partial: "catch_card", locals: { catch: catch } %>
+<% end %>
+<% end %>
+</div>

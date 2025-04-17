@@ -1,0 +1,74 @@
+<%= form_with(model: catch) do |form| %>
+  <% if catch.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(catch.errors.count, "error") %> prohibited this catch from being saved:</h2>
+
+      <ul>
+        <% catch.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="card-container">
+  <div class="card">
+    <div class="card-header"><h1><%= @catch.new_record? ? "New Catch" : "Edit Catch" %></h1>
+    </div>
+    <div class="card-body">
+  <div class="field form-group">
+    <%= form.label :species %>
+    <%= form.text_field :species, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :bait %>
+    <%= form.text_field :bait, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :weather %>
+    <%= form.text_field :weather, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :date %>
+    <%= form.datetime_field :date,
+      class: "form-control",
+      value: Time.zone.now.strftime("%Y-%m-%dT%H:%M"),
+      max: Time.zone.now.strftime("%Y-%m-%dT%H:%M") %>
+
+  <div class="field form-group">
+  <%= form.label :length, "Length (inches)" %>
+  <%= form.number_field :length, step: 0.1, class: "form-control" %>
+</div>
+
+<div class="field form-group">
+  <%= form.label :weight, "Weight (pounds)" %>
+  <%= form.number_field :weight, step: 0.1, class: "form-control" %>
+</div>
+
+
+  <div class="field form-group">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, class: "form-control" %>
+  </div>
+  <br/>
+
+    <div class="field form-group">
+    <%= form.number_field :user_id, id: :catch_user_id, class: "form-control", value: current_user.id, type:"hidden" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+  </div>
+
+</br>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= form.submit class:'btn btn-success' %>
+  </div>
+<% end %>
+<br/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<tr id="<%= dom_id catch %>">
+
+  <td>
+    <%= catch.species %>
+  </td>
+  <td>
+    <%= catch.bait %>
+  </td>
+  <td>
+    <%= catch.notes %>
+  </td>
+  <td>
+  <% if local_assigns[:show_link] != false %>
+  <%= link_to "Details", catch, class:"btn btn-dark" %>
+  <% end %>
+  </td>
+  </tr>

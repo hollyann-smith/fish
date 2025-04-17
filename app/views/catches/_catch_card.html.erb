@@ -1,0 +1,20 @@
+<div class="card-container">
+  <div class="card text-center">
+    <% if catch.photo.attached? %>
+      <div class="card-header p-0">
+        <%= image_tag url_for(catch.photo), class: "img-fluid rounded-top", style: "width: 300px; object-fit: cover;" %>
+      </div>
+    <% end %>
+
+    <div class="card-body">
+      <h1 class="card-title"><%= catch.species %></h1>
+      <h6 class="card-subtitle mb-2 text-muted"><%= catch.date.strftime("%m/%d/%Y") %>
+</h6>
+<h6>User: <%= catch.user_id %></h6>
+
+      <br/>
+      <%= link_to "Details", catch, class:"btn btn-custom" %>
+    
+    </div>
+  </div>
+</div>
