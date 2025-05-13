@@ -1,15 +1,27 @@
 
-<div class="card-container">    <%= link_to "Back to Catches", catches_path, class: "btn btn-custom " %>
+<div class="mb-3">
+  <%= link_to "Back to Catches", catches_path, class: "btn btn-custom" %>
 </div>
-<%= render partial: "catch_detail_card", locals: { catch: @catch, show_link: false } %>
 
-<h3>Comments</h3>
-<% @comments.each do |comment| %>
-  <div>
-    <strong><%= comment.user.email %></strong>:
-    <%= comment.content %>
+<%= render "catch_detail_card", catch: @catch, show_link: false %>
+
+<div class="card-container">
+<div class="card">
+<%= render "reactions/list", catch: @catch %>
+<%= render "comments/list",  comments: @comments %>
+<%= render "reactions/form", catch: @catch %>
+
+
+
+<%= render "comments/form",  catch: @catch, comment: @comment %>
+</div>
+</div>
+
+<% if @nearby.any? %>
+  <h5 class="mt-4">Nearby Catches (within 25 mi)</h5>
+  <div class="card-flex">
+    <% @nearby.each do |n| %>
+      <%= render "catch_card", catch: n, show_link: true %>
+    <% end %>
   </div>
 <% end %>
-
-
-<%= render "comment_form" %>

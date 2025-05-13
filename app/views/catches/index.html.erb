@@ -1,12 +1,17 @@
 <br/>
 
-<div class="card-container">
-<%= link_to "Add New Catch", new_catch_path, class:"btn btn-custom" %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <%= link_to "Add New Catch", new_catch_path, class: "btn btn-custom" %>
+
+  <% if @show_all %>
+    <%= link_to "My Catches", catches_path, class: "btn btn-outline-secondary" %>
+  <% else %>
+    <%= link_to "View All Catches", catches_path(all: 1), class: "btn btn-outline-secondary" %>
+  <% end %>
 </div>
+
 <div class="card-flex">
-<% @catches.each do |catch| %>
-<% if catch.user == current_user %>
-  <%= render partial: "catch_card", locals: { catch: catch } %>
-<% end %>
-<% end %>
+  <% @catches.each do |catch| %>
+    <%= render "catch_card", catch: catch %>
+  <% end %>
 </div>

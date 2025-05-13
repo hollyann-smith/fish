@@ -1,0 +1,8 @@
+
+<div class="mt-2">
+  <% @catch.reactions.each do |reaction| %>
+    <span class="me-2" style="font-size:1.5rem;">
+      <%= reaction.emoji %>
+    </span>
+  <% end %>
+</div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :catches do
     resources :comments, only: [ :create ]
+    resources :reactions, only: [ :create ]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

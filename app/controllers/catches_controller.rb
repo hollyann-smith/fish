@@ -4,14 +4,29 @@ class CatchesController < ApplicationController
   before_action :correct_user, only: [ :edit, :update, :destroy ]
   # GET /catches or /catches.json
   def index
-    @catches = Catch.all
+    if params[:all] == "1"
+      @show_all = true
+      @catches  = Catch.all_catches
+    else
+      @show_all = false
+      @catches  = Catch.for_user(current_user)
+    end
   end
 
   # GET /catches/1 or /catches/1.json
   def show
     @catch = Catch.find(params[:id])
-    @comments = @catch.comments
+    @comments = @catch.comments.includes(:user)
     @comment = Comment.new
+
+    if @catch.latitude.present? && @catch.longitude.present?
+      @nearby = Catch
+                .near([ @catch.latitude, @catch.longitude ], 25)     # radius
+                .where.not(id: @catch.id)                         # exclude current
+                .limit(10)
+    else
+      @nearby = Catch.none
+    end
   end
 
   # GET /catches/new

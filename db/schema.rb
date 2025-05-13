@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_16_143919) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_23_194521) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_143919) do
     t.integer "user_id"
     t.float "length"
     t.float "weight"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_catches_on_user_id"
   end
 
@@ -61,6 +64,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_143919) do
     t.datetime "updated_at", null: false
     t.index ["catch_id"], name: "index_comments_on_catch_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.string "emoji"
+    t.integer "user_id", null: false
+    t.integer "catch_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["catch_id"], name: "index_reactions_on_catch_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,4 +92,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_143919) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "catches"
   add_foreign_key "comments", "users"
+  add_foreign_key "reactions", "catches"
+  add_foreign_key "reactions", "users"
 end

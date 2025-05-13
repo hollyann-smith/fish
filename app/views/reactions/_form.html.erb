@@ -1,0 +1,47 @@
+<%= form_with model: [catch, Reaction.new], local: true, class: "mt-3" do |f| %>
+  <div class="input-group mb-3">
+    <%= f.text_field :emoji,
+          id: "emoji-input",
+          class: "form-control",
+          placeholder: "Choose emoji…" %>
+
+    <button class="btn btn-outline-secondary"
+            type="button"
+            id="emoji-btn"
+            aria-label="Open emoji picker">
+      😊
+    </button>
+  </div>
+
+  <%= f.submit "React!", class: "btn btn-primary" %>
+<% end %>
+<script type="module">
+  import 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js';
+
+  document.addEventListener('turbo:load', () => {           // use DOMContentLoaded if not on Turbo
+    const input  = document.getElementById('emoji-input');
+    const button = document.getElementById('emoji-btn');
+
+    // create picker once
+    const picker = document.createElement('emoji-picker');
+    picker.style.position = 'absolute';
+    picker.style.zIndex   = '1000';
+    picker.addEventListener('emoji-click', e => {
+      input.value = e.detail.unicode;
+      picker.remove();          // close after pick
+    });
+
+    button.addEventListener('click', () => {
+      // close if it is already open
+      if (document.body.contains(picker)) {
+        picker.remove();
+        return;
+      }
+      // position under the button
+      const rect = button.getBoundingClientRect();
+      picker.style.top  = `${rect.bottom + window.scrollY}px`;
+      picker.style.left = `${rect.left  + window.scrollX}px`;
+      document.body.appendChild(picker);
+    });
+  });
+</script>

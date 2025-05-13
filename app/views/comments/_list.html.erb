@@ -1,0 +1,11 @@
+
+<% if comments.any? %>
+  <% comments.each do |c| %>
+    <div class="mb-2">
+      <strong><%= c.user.email %>:</strong>
+      <%= c.content %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="text-muted">No comments yet</p>
+<% end %>
