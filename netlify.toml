@@ -1,9 +1,10 @@
 [build]
-  command = "mise install && bundle install && bundle exec rails assets:precompile"
-  publish = "public" 
+  command = "mise install && gem install bundler && bundle install && bundle exec rails assets:precompile"
+  publish = "public"
 
 [build.environment]
   MISE_ROOT = "/opt/buildhome/.mise"
+  MISE_USE_TOML = "false"
 
 [[plugins]]
   package = "netlify-plugin-mise"
